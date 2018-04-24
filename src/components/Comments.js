@@ -13,7 +13,11 @@ export class Comment extends React.Component {
 
   render() {
     if (this.state.hidden) {
-      return <button onClick={this.toggle}>Mostrar comentário</button>;
+      return (
+        <div className="App-comment">
+          <button onClick={this.toggle}>Mostrar comentário</button>
+        </div>
+      );
     }
     return (
       <div className="App-comment">
@@ -49,6 +53,7 @@ class CommentBox extends React.Component {
         <input
           value={this.state.text}
           onChange={this.handleTextChange}
+          className="App-comment_box"
           type="text"
         />
         <button onClick={this.handleButtonClick}>Comentar</button>

@@ -1,17 +1,50 @@
+.App::before {
+  background-color: #c4170c;
+  color: white;
+  content: 'G1';
+  width: 100%;
+  float: left;
+  margin: 0 0 20px;
+  text-align: center;
+  padding: 16px 0;
+  font-size: 24px;
+}
+
 .App {
-  font: sans-serif;
   padding: 0 36px;
+  max-width: 940px;
+  margin: 0 auto;
 }
 
 .App-header {
-  padding: 20px;
-  text-align: center;
+  padding: 20px 0;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 48px;
+}
+
+.App-comment {
+  border-bottom: 1px solid #CCC;
+  padding: 16px 0;
 }
 
 .App-comments {
+  border-top: 1px solid #CCC;
   margin: 48px 0;
+}
+
+.App-comment_box {
+  font-size: 14px;
+  height: 20px;
+  width: 100%;
+}
+
+.App-comment_button {
+  margin: 16px 0;
+}
+
+.Comment-User {
+  color: #666;
+  font-style: italic;
 }
