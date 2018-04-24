@@ -21,7 +21,9 @@ export class Comment extends React.Component {
         {/* XSS WARNING!!! */}
         <p
           className="Comment-Body"
-          dangerouslySetInnerHTML={{__html: this.props.content.replace("\n", "<br>")}}
+          dangerouslySetInnerHTML={{
+            __html: this.props.content.replace("\n", "<br>")
+          }}
         />
         <button onClick={this.toggle}>Esconder comentário</button>
       </div>
@@ -29,7 +31,31 @@ export class Comment extends React.Component {
   }
 }
 
-// http://jsonplaceholder.typicode.com/comments?postId=1
+class CommentBox extends React.Component {
+  state = {
+    text: ""
+  };
+  handleTextChange = event => {
+    this.setState({
+      text: event.target.value
+    });
+  };
+  handleButtonClick = () => {
+    alert(this.state.text)
+  }
+  render() {
+    return (
+      <div>
+        <input
+          value={this.state.text}
+          onChange={this.handleTextChange}
+          type="text"
+        />
+        <button onClick={this.handleButtonClick}>Comentar</button>
+      </div>
+    );
+  }
+}
 
 class Comments extends React.Component {
   state = {
@@ -50,6 +76,7 @@ class Comments extends React.Component {
     return (
       <div className="App-comments">
         <h2>Comentários</h2>
+        <CommentBox />
         {this.state.comments.map(comment => {
           return (
             <Comment
