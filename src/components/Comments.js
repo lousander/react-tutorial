@@ -1,12 +1,31 @@
 import React from "react";
 
 class Comment extends React.Component {
+  state = {
+    hidden: false
+  }
+
+  hide = () => {
+    this.setState({
+      hidden: true
+    })
+  }
+
+  show = () => {
+    this.setState({
+      hidden: false
+    })
+  }
+
   render() {
+    if (this.state.hidden) {
+      return <button onClick={this.show}>Mostrar comentário</button>
+    }
     return (
       <div className="App-comment">
         <p>{this.props.user}</p>
         <p>{this.props.content}</p>
-        <a href="#" onClick={() => alert(1)}>Esconder comentário</a>
+        <button onClick={this.hide}>Esconder comentário</button>
       </div>
     );
   }
