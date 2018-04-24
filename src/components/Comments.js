@@ -1,12 +1,15 @@
-import React from "react"
+import React from "react";
 
-const Comment = props => {
-  return (
-    <div className="App-comment">
-      <p>{ props.user }</p>
-      <p>{ props.content }</p>
-    </div>
-  )
+class Comment extends React.Component {
+  render() {
+    return (
+      <div className="App-comment">
+        <p>{this.props.user}</p>
+        <p>{this.props.content}</p>
+        <a href="#" onClick={() => alert(1)}>Esconder comentário</a>
+      </div>
+    );
+  }
 }
 
 const Comments = () => {
