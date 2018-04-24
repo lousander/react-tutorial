@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Comments from "./Comments";
 
 class Article extends Component {
   state = {
@@ -26,6 +27,7 @@ class Article extends Component {
         {this.state.body.split("\n").map(block => {
           return <p key={atob(block)}>{ block }</p>
         })}
+        <Comments />
       </div>
     );
   }
