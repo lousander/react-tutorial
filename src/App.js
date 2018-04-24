@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import "./App.css";
 
 import Article from "./components/Article";
+import ArticleList from "./components/ArticleList";
 
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <Route path="/" exact component={Article} />
+          <Route path="/" exact component={ArticleList} />
+          <Route path="/:id" exact component={Article} />
         </div>
       </BrowserRouter>
     );
