@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 
+import Comments from  "./components/Comments";
+
 class App extends Component {
   render() {
     return (
@@ -38,21 +40,7 @@ class App extends Component {
           Veniam consequatur quisquam, atque quaerat expedita, eos possimus nisi
           reprehenderit similique facilis architecto fugit?
         </p>
-        <div className="App-comments">
-          <h2>Comentários</h2>
-          <div className="App-comment">
-            <p>João</p>
-            <p>Que matéria legal!</p>
-          </div>
-          <div className="App-comment">
-            <p>Maria</p>
-            <p>Que matéria chata!</p>
-          </div>
-          <div className="App-comment">
-            <p>José</p>
-            <p>Concordo com os dois!</p>
-          </div>
-        </div>
+        <Comments />
       </div>
     );
   }
