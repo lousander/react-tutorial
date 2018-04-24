@@ -41,8 +41,8 @@ class CommentBox extends React.Component {
     });
   };
   handleButtonClick = () => {
-    alert(this.state.text)
-  }
+    this.props.onCommentAdd(this.state.text);
+  };
   render() {
     return (
       <div>
@@ -72,11 +72,25 @@ class Comments extends React.Component {
       }
     );
   }
+
+  handleCommentAdd = text => {
+    const comments = this.state.comments.slice();
+    const newComment = {
+      id: Math.floor(Math.random() * 900 + 100),
+      body: text,
+      name: "foo"
+    };
+    comments.push(newComment);
+    this.setState({
+      comments
+    });
+  };
+
   render() {
     return (
       <div className="App-comments">
         <h2>Comentários</h2>
-        <CommentBox />
+        <CommentBox onCommentAdd={this.handleCommentAdd} />
         {this.state.comments.map(comment => {
           return (
             <Comment
