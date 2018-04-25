@@ -10,6 +10,7 @@
     "react-router-dom": "4.2.2"
   },
   "devDependencies": {
+    "gh-pages": "1.1.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {
@@ -17,5 +18,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "homepage": "http://www.vierno.com.br/react-tutorial/"
 }
