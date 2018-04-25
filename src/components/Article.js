@@ -23,8 +23,8 @@ class Article extends Component {
   render() {
     return (
       <div>
-        <header className="App-header">
-          <h1 className="App-title">{this.state.title}</h1>
+        <header className="header">
+          <h1 className="title">{this.state.title}</h1>
         </header>
         {this.state.body.split("\n").map((block, index) => {
           return <p key={index}>{block}</p>;

@@ -14,17 +14,17 @@ export class Comment extends React.Component {
   render() {
     if (this.state.hidden) {
       return (
-        <div className="App-comment">
+        <div className="comment">
           <button onClick={this.toggle}>Mostrar comentário</button>
         </div>
       );
     }
     return (
-      <div className="App-comment">
-        <p className="Comment-User">{this.props.user}</p>
+      <div className="comment">
+        <p className="comment_user">{this.props.user}</p>
         {/* XSS WARNING!!! */}
         <p
-          className="Comment-Body"
+          className="comment_body"
           dangerouslySetInnerHTML={{
             __html: this.props.content.replace("\n", "<br>")
           }}
@@ -37,26 +37,48 @@ export class Comment extends React.Component {
 
 class CommentBox extends React.Component {
   state = {
-    text: ""
+    text: "",
+    user: ""
   };
+
   handleTextChange = event => {
     this.setState({
       text: event.target.value
     });
   };
-  handleButtonClick = () => {
-    this.props.onCommentAdd(this.state.text);
+
+  handleUserChange = event => {
+    this.setState({
+      user: event.target.value
+    });
   };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { text, user } = this.state;
+    this.props.onCommentAdd({ text, user });
+  };
+
   render() {
     return (
-      <div>
-        <input
-          value={this.state.text}
-          onChange={this.handleTextChange}
-          className="App-comment_box"
-          type="text"
-        />
-        <button onClick={this.handleButtonClick}>Comentar</button>
+      <div className="new_comment">
+        <form action="" onSubmit={this.handleSubmit}>
+          <h3>Adicionar novo comentário:</h3>
+          <p>Seu nome</p>
+          <input
+            value={this.state.user}
+            onChange={this.handleUserChange}
+            className="user_input"
+            type="text"
+          />
+          <p>Sua mensagem</p>
+          <textarea
+            value={this.state.text}
+            onChange={this.handleTextChange}
+            className="comment_box"
+          />
+          <button onClick={this.handleSubmit}>Comentar</button>
+        </form>
       </div>
     );
   }
@@ -78,22 +100,23 @@ class Comments extends React.Component {
     );
   }
 
-  handleCommentAdd = text => {
+  handleCommentAdd = ({ user, text }) => {
     const comments = this.state.comments.slice();
-    const newComment = {
-      id: Math.floor(Math.random() * 900 + 100),
-      body: text,
-      name: "foo"
-    };
-    comments.push(newComment);
+    const newComment = [
+      {
+        id: Math.floor(Math.random() * 900 + 100),
+        body: text,
+        name: user
+      }
+    ];
     this.setState({
-      comments
+      comments: newComment.concat(comments)
     });
   };
 
   render() {
     return (
-      <div className="App-comments">
+      <div className="comments">
         <h2>Comentários</h2>
         <CommentBox onCommentAdd={this.handleCommentAdd} />
         {this.state.comments.map(comment => {

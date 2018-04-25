@@ -16,35 +16,54 @@
   margin: 0 auto;
 }
 
-.App-header {
+.header {
   padding: 20px 0;
 }
 
-.App-title {
+.title {
   font-size: 48px;
 }
 
-.App-comment {
+.comment {
   border-bottom: 1px solid #CCC;
   padding: 16px 0;
 }
 
-.App-comments {
+.comments {
   border-top: 1px solid #CCC;
   margin: 48px 0;
 }
 
-.App-comment_box {
+.comment_box {
   font-size: 14px;
   height: 20px;
   width: 100%;
 }
 
-.App-comment_button {
+.comment_button {
   margin: 16px 0;
 }
 
-.Comment-User {
+.comment_user {
   color: #666;
   font-style: italic;
+}
+
+.article_list {
+  list-style: none;
+  padding: 0
+}
+
+.article_list li {
+  margin: 10px 0;
+}
+
+.article_list a {
+  color: #c4170c;
+  text-decoration: none;
+}
+
+.article_list a:hover {
+  color: #8e0000;
+  text-decoration: none;
 }

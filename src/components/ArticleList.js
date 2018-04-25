@@ -19,12 +19,15 @@ export default class ArticleList extends React.Component {
     if (posts.length > 0) {
       return (
         <div>
-          <ul>
+          <h1>Matérias: </h1>
+          <ul className="article_list">
             {posts.map(post => {
               return (
-                <Link key={post.id} to={`/${post.id}`}>
-                  <li>{post.title}</li>
-                </Link>
+                <li key={post.id}>
+                  <Link to={`/${post.id}`}>
+                    {post.title}
+                  </Link>
+                </li>
               );
             })}
           </ul>
