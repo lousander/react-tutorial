@@ -1,88 +1,7 @@
 import React from "react";
+import CommentBox from "./CommentBox";
 
-export class Comment extends React.Component {
-  state = {
-    hidden: false
-  };
-
-  toggle = () => {
-    this.setState({
-      hidden: !this.state.hidden
-    });
-  };
-
-  render() {
-    if (this.state.hidden) {
-      return (
-        <div className="comment">
-          <button onClick={this.toggle}>Mostrar comentário</button>
-        </div>
-      );
-    }
-    return (
-      <div className="comment">
-        <p className="comment_user">{this.props.user}</p>
-        {/* XSS WARNING!!! */}
-        <p
-          className="comment_body"
-          dangerouslySetInnerHTML={{
-            __html: this.props.content.replace("\n", "<br>")
-          }}
-        />
-        <button onClick={this.toggle}>Esconder comentário</button>
-      </div>
-    );
-  }
-}
-
-class CommentBox extends React.Component {
-  state = {
-    text: "",
-    user: ""
-  };
-
-  handleTextChange = event => {
-    this.setState({
-      text: event.target.value
-    });
-  };
-
-  handleUserChange = event => {
-    this.setState({
-      user: event.target.value
-    });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    const { text, user } = this.state;
-    this.props.onCommentAdd({ text, user });
-  };
-
-  render() {
-    return (
-      <div className="new_comment">
-        <form action="" onSubmit={this.handleSubmit}>
-          <h3>Adicionar novo comentário:</h3>
-          <p>Seu nome</p>
-          <input
-            value={this.state.user}
-            onChange={this.handleUserChange}
-            className="user_input"
-            type="text"
-          />
-          <p>Sua mensagem</p>
-          <textarea
-            value={this.state.text}
-            onChange={this.handleTextChange}
-            className="comment_box"
-          />
-          <button onClick={this.handleSubmit}>Comentar</button>
-        </form>
-      </div>
-    );
-  }
-}
+import SingleComment from "./SingleComment";
 
 class Comments extends React.Component {
   state = {
@@ -100,13 +19,13 @@ class Comments extends React.Component {
     );
   }
 
-  handleCommentAdd = ({ user, text }) => {
+  handleCommentAdd = ({ name, body }) => {
     const comments = this.state.comments.slice();
     const newComment = [
       {
         id: Math.floor(Math.random() * 900 + 100),
-        body: text,
-        name: user
+        body,
+        name,
       }
     ];
     this.setState({
@@ -118,10 +37,10 @@ class Comments extends React.Component {
     return (
       <div className="comments">
         <h2>Comentários</h2>
-        <CommentBox onCommentAdd={this.handleCommentAdd} />
+        <CommentBox insertComment={this.handleCommentAdd} />
         {this.state.comments.map(comment => {
           return (
-            <Comment
+            <SingleComment
               teste={comment}
               key={comment.id}
               user={comment.name}

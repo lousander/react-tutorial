@@ -21,10 +21,11 @@ export default class ArticleList extends React.Component {
         <div>
           <h1>Matérias: </h1>
           <ul className="article_list">
-            {posts.map(post => {
+            {posts.map((post, i) => {
               return (
                 <li key={post.id}>
                   <Link to={`/${post.id}`}>
+                    <img src={`https://placeimg.com/150/100/any/${i}`} alt=""/>
                     {post.title}
                   </Link>
                 </li>
