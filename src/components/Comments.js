@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import CommentBox from "./CommentBox";
 
 import SingleComment from "./SingleComment";
@@ -11,7 +12,8 @@ class Comments extends React.Component {
     fetch("http://jsonplaceholder.typicode.com/comments?postId=1").then(
       response => {
         response.json().then(data => {
-          this.setState({
+          this.props.dispatch({
+            type: "POPULATE_COMMENTS",
             comments: data
           });
         });
@@ -20,16 +22,17 @@ class Comments extends React.Component {
   }
 
   handleCommentAdd = ({ name, body }) => {
-    const comments = this.state.comments.slice();
-    const newComment = [
-      {
-        id: Math.floor(Math.random() * 900 + 100),
-        body,
-        name,
-      }
-    ];
-    this.setState({
-      comments: newComment.concat(comments)
+    this.props.dispatch({
+      type: "ADD_COMMENT",
+      name,
+      body
+    });
+  };
+
+  onCommentToggle = id => {
+    this.props.dispatch({
+      type: "TOGGLE_VISIBILITY",
+      id
     });
   };
 
@@ -38,13 +41,16 @@ class Comments extends React.Component {
       <div className="comments">
         <h2>Comentários</h2>
         <CommentBox insertComment={this.handleCommentAdd} />
-        {this.state.comments.map(comment => {
+        {this.props.comments.map(comment => {
           return (
             <SingleComment
               teste={comment}
               key={comment.id}
               user={comment.name}
               content={comment.body}
+              id={comment.id}
+              hidden={comment.hidden}
+              onCommentToggle={this.onCommentToggle}
             />
           );
         })}
@@ -53,4 +59,10 @@ class Comments extends React.Component {
   }
 }
 
-export default Comments;
+const mapStateToProps = state => {
+  return {
+    comments: state.comments
+  };
+};
+
+export default connect(mapStateToProps)(Comments);
