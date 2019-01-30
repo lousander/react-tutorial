@@ -23,30 +23,11 @@ Dentro do seu diretório de projetos:
 - Ao final do curso, a página deverá parecer com: http://www.vierno.om.br/react-tutorial/
 
 
-## Customizando
-
-### Fazendo uma matéria com React
-
-- Explorar a estrutura de arquivos criada
+## Links
 - Copiar o CSS de https://raw.githubusercontent.com/vierno/react-tutorial/master/src/App.css
-- Fazer mudanças de CSS e JSX (o que é JSX?)
-- Criar esqueleto da Matéria
+- Esqueleto da matéria
 - https://raw.githubusercontent.com/vierno/react-tutorial/master/article.html
 - Note: Always start component names with a capital letter.
-
-### Componentes React
-
-- Extrair o componente de Artigo e Comentários
-- Usar props para renderizar o conteúdo de comentários
-- Instalar react developer tools
-
-### Estado / eventos
-
-- Criar botão
-- Fazer onClick mostrando alerta
-- Ocultar / mostrar comentário
-- Estado e props
-- Inspecionar para mostar atualização do DOM
 
 ### Testes
 
@@ -68,12 +49,6 @@ configure({ adapter: new Adapter() });
 - Lifecycle
 - http://jsonplaceholder.typicode.com/comments?postId=1
 - XSS
-
-### Criar comentários 
-
-- Criar box para comentar
-- Controlled components
-- Callbacks
 
 ### React Router
 
