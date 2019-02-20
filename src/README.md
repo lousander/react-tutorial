@@ -26,7 +26,7 @@ Dentro do seu diretório de projetos:
 ## Links
 - Copiar o CSS de https://raw.githubusercontent.com/vierno/react-tutorial/master/src/App.css
 - Esqueleto da matéria
-- https://raw.githubusercontent.com/vierno/react-tutorial/master/article.html
+- https://raw.githubusercontent.com/lousander/react-tutorial/master/article.html
 - Note: Always start component names with a capital letter.
 
 ### Testes
